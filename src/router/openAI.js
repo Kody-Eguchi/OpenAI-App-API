@@ -18,19 +18,14 @@ router.post("/api/generate", async (req, res) => {
     jobTitle,
     programmingLanguages,
   } = req.body;
-  console.log(
-    candidateName,
-    employerName,
-    employerAddress,
-    jobTitle,
-    programmingLanguages
-  );
+
   const param = `
     My name is ${candidateName}. 
     Write a cover letter to apply the ${jobTitle} position at company name ${employerName}. 
     Ensure to include following address of the employer ${employerAddress} in header in this form /n "Company Name" /n "Company Address". 
     Ensure to only mention ${programmingLanguages} as proficient programming languages of applicant and do not mention any other programming langugages in this cover letter.
-    Ensure this cover letter has 5 paragraphs.
+    Ensure this cover letter has 5 paragraphs and each paragraph must have more than 4 sentenses.
+    Use html tags for formatting but do not need a head tag. 
   `;
 
   const response = await openai.createChatCompletion({
